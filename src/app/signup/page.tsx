@@ -122,7 +122,7 @@ const Sign_Up = () => {
                 disabled={loading}
                 className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
               >
-                {loading ? "confirming..." : "confirmation"}
+                {loading ? "registering..." : "registeration"}
               </button>
             </form>
           </>
