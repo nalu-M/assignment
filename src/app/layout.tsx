@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from '@/app/ui/nav';
 import React from 'react';
-import { Amplify } from 'aws-amplify';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
