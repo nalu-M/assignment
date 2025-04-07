@@ -1,6 +1,6 @@
 'use client';
 
-import "@/app/amlify/config";
+import "@/app/amp/config";
 import { useState } from "react";
 import { signIn, SignInInput } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";

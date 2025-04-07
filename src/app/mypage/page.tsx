@@ -1,6 +1,6 @@
 'use client';
 
-import "@/app/amlify/config";
+import "@/app/amp/config";
 import { useState, useEffect } from "react";
 import { getCurrentUser, type GetCurrentUserOutput } from "aws-amplify/auth";
 import LogOutButton from "../ui/logout-button";

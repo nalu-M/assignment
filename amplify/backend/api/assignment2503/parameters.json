@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "assignment2503",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authassignment25034bc24a23",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
