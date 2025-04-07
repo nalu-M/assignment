@@ -23,8 +23,12 @@ export default function Log_In() {
             };
             await signIn(signInInput);
             router.push("/mypage");
-        } catch (err: any) {
-            setError(err?.message || "ログインに失敗しました");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("ログインに失敗しました");
+            }
         } finally {
             setLoading(false);
         }

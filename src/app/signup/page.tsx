@@ -33,8 +33,12 @@ const Sign_Up = () => {
       await signUp(signUpInput);
 
       setStep("confirm");
-    } catch (err: any) {
-      setError(err?.message || "サインアップに失敗しました");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("サインアップに失敗しました");
+      }
     } finally {
       setLoading(false);
     }
@@ -53,8 +57,12 @@ const Sign_Up = () => {
       await confirmSignUp(confirmSignUpInput);
 
       router.push("/login");
-    } catch (err: any) {
-      setError(err?.message || "認証に失敗しました");
+    } catch (err: unknown) {
+      if ( err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("認証に失敗しました");
+      }
     } finally {
       setLoading(false);
     }
