@@ -1,19 +1,10 @@
 'use client';
 
+import "@/app/amlify/config";
 import { Amplify } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { getCurrentUser, type GetCurrentUserOutput } from "aws-amplify/auth";
 import LogOutButton from "../ui/logout-button";
-
-Amplify.configure({
-    Auth: {
-        Cognito:{
-            userPoolClientId: '6otrennd80004vsmj6i03e2r6g',
-            userPoolId: 'ap-southeast-2_ozLg75mMm',
-        }
-  
-    }
-});
 
 const  My_Page = () => {
     const [user, setUser] = useState<GetCurrentUserOutput | null>(null);
@@ -41,7 +32,7 @@ const  My_Page = () => {
 
     return (
         <div className="flex min-h-screen items-center justify-center">
-            <div className="w-128 mx-auto bg-white p-6 rouded-lg shadow-md">
+            <div className="w-128 mx-auto bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-xl font-bold mb-4">user information</h2>
                 {error ? (
                     <p className="text-red-500">{error}</p>

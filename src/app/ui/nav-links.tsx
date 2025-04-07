@@ -22,15 +22,12 @@ export default function NavLinks() {
                     <Link
                         key={navigation.name}
                         href={navigation.href}
-                        className={
-                            pathname === navigation.href
+                        className={pathname === navigation.href
                              ? "underline font-bold text-blue-400 hover:text-blue-500"
                              : "hover:text-gray-300"
                         }
                     >
-                        <p className="hidden md:block">
-                            {navigation.name}
-                        </p>
+                        {navigation.name}
                     </Link>
             
                 );

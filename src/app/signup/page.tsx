@@ -1,19 +1,9 @@
 'use client';
 
-import { Amplify } from 'aws-amplify';
+import "@/app/amlify/config";
 import { useState } from "react";
 import { signUp, type SignUpInput, confirmSignUp, type ConfirmSignUpInput } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";
-
-Amplify.configure({
-  Auth: {
-    Cognito:{
-      userPoolClientId: '6otrennd80004vsmj6i03e2r6g',
-      userPoolId: 'ap-southeast-2_ozLg75mMm',
-    }
-
-  }
-});
 
 const Sign_Up = () => {
   const router = useRouter();
@@ -44,7 +34,7 @@ const Sign_Up = () => {
 
       setStep("confirm");
     } catch (err: any) {
-      setError(err.message || "サインアップに失敗しました");
+      setError(err?.message || "サインアップに失敗しました");
     } finally {
       setLoading(false);
     }
@@ -64,7 +54,7 @@ const Sign_Up = () => {
 
       router.push("/login");
     } catch (err: any) {
-      setError(err.message || "認証に失敗しました");
+      setError(err?.message || "認証に失敗しました");
     } finally {
       setLoading(false);
     }
@@ -72,7 +62,7 @@ const Sign_Up = () => {
 
   return(
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rouded-lg shadow-lg w-96">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         {step === "signup" ? (
           <>
             <h2 className="text-2xl font-bold mb-6 text-center">
@@ -134,7 +124,7 @@ const Sign_Up = () => {
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <form onSubmit={handleConfirm_Sign_Up}>
               <div className="mb-4">
-                <label className="black text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700">
                   confirmationcode
                 </label>
                 <input
@@ -151,7 +141,7 @@ const Sign_Up = () => {
                 disabled={loading}
                 className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
               >
-                {loading ? "confirming..." : "confirmation"}
+                {loading ? "Confirming..." : "Confirmation"}
               </button>
             </form>
           </>
