@@ -1,0 +1,50 @@
+'use client';
+
+import { useState, useEffect } from "react";
+import { getCurrentUser, signOut } from "aws-amplify/auth";
+import { useRouter } from "next/navigation";
+
+const LogOutButton = () => {
+    const router = useRouter();
+    const [login, setLogin] = useState<boolean>(false);
+
+    useEffect(() => {
+        const checkUser = async () => {
+            try {
+                await getCurrentUser();
+                setLogin(true);
+            } catch {
+                setLogin(false);
+            };
+        };
+    
+        checkUser();
+
+        const interval = setInterval(checkUser, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+    
+    const handleLog_Out = async () => {
+        try {
+            await signOut();
+            setLogin(false);
+            router.push("/login");
+        } catch (error) {
+            console.error("ログアウトに失敗しました", error);
+        }
+    };
+
+    if (!login) return null;
+
+    return (
+        <button
+            onClick={handleLog_Out}
+            className="fixed top-14 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition"
+        >
+            ログアウト
+        </button>
+    );
+};
+
+export default LogOutButton;

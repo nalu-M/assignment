@@ -3,6 +3,7 @@
 import { Amplify } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { getCurrentUser, type GetCurrentUserOutput } from "aws-amplify/auth";
+import LogOutButton from "../ui/logout-button";
 
 Amplify.configure({
     Auth: {
@@ -65,6 +66,7 @@ const  My_Page = () => {
                     </div>
                 )}
             </div>
+            <LogOutButton />
         </div>
     );
 };
