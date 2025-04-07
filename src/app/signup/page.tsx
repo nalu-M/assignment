@@ -15,8 +15,8 @@ const Sign_Up = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSign_Up = async (e:React.FormEvent) => {
-    e.preventDefault();
+  const handleSign_Up = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setError(null);
 
     if (password !== confirmPassword) {
@@ -40,8 +40,8 @@ const Sign_Up = () => {
     }
   };
 
-  const handleConfirm_Sign_Up = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleConfirm_Sign_Up = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setError(null);
 
     try {

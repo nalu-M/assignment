@@ -1,7 +1,6 @@
 'use client';
 
 import "@/app/amlify/config";
-import { Amplify } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { getCurrentUser, type GetCurrentUserOutput } from "aws-amplify/auth";
 import LogOutButton from "../ui/logout-button";
@@ -16,7 +15,10 @@ const  My_Page = () => {
             try {
                 const user = await getCurrentUser();
                 setUser(user);
-            } catch (err: any) {
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    console.error(err.message);
+                }
                 setError("ログインしていません");
             } finally {
                 setLoading(false);

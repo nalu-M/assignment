@@ -1,7 +1,6 @@
 'use client';
 
 import "@/app/amlify/config";
-import { Amplify } from "aws-amplify";
 import { useState } from "react";
 import { signIn, SignInInput } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";
@@ -13,8 +12,8 @@ export default function Log_In() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    const handleLog_In = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleLog_In = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         setLoading(true);
         setError("");
         try {
