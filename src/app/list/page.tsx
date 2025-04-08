@@ -1,11 +1,29 @@
-import React from "react";
+'use client';
 
-export default function List() {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-3xl font-bold text-gray-700">
-                list
-            </h1>
-        </div>
-    );
+import { useEffect, useState } from "react";
+
+type User = {
+  username: string;
+  email: string;
+};
+
+export default function UsersPage() {
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    fetch("/api/getUsers")
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>ユーザー一覧</h1>
+      <ul>
+        {users.map((user, index) => (
+          <li key={index}>{user.username} - {user.email}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }

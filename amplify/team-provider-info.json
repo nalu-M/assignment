@@ -17,6 +17,12 @@
       },
       "api": {
         "assignment2503": {}
+      },
+      "function": {
+        "getUserDate": {
+          "deploymentBucketName": "amplify-assignment2503-dev-80cac-deployment",
+          "s3Key": "amplify-builds/getUserDate-4b6247534b2b576c2f4e-build.zip"
+        }
       }
     }
   }

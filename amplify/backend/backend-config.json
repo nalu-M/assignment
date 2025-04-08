@@ -52,5 +52,30 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
+  },
+  "function": {
+    "getUserDate": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getUserDate_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUserDate"
+        }
+      ]
+    },
+    "AMPLIFY_function_getUserDate_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUserDate"
+        }
+      ]
+    }
   }
 }
